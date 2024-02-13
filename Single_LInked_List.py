@@ -65,6 +65,42 @@ class single_ll:
                 count=count+1
             prev.next = new_node
             new_node.next=curr
+    def sll_node_delete_at_first(self):
+        temp=self.head
+        if self.head is None:
+            return "no elements to delete"
+        else:
+            self.head=self.head.next
+            temp=None
+
+    def sll_node_delete_at_last(self):
+        temp=self.head
+        prev=None
+        if self.head is None:
+            return "no elements to delete"
+        else:
+            while temp.next != None:
+                prev=temp
+                temp=temp.next
+            prev.next=None
+    def sll_node_delete_at_position(self,pos):
+        temp=self.head
+        prev=None
+        count=0
+        a=self.length_linked_list()
+        print("length a",a)
+        if self.head is None:
+            return "no elements to delete"
+        elif pos==1:
+            self.sll_node_delete_at_first()
+        else:
+            if pos<=a:
+                while pos-1>count and temp!= None:
+                    count=count+1
+                    prev=temp
+                    temp=temp.next
+                prev.next=temp.next
+                temp=None
 
 
     def display(self):
@@ -87,6 +123,9 @@ print(f'no of elements in the linked list {sll.length_linked_list()}')
 print(f"\nverifying the element {sll.verify_node(30)}")
 print(f"verifying the element {sll.verify_node(2)}")
 print(f"verifying the element {sll.verify_node(5)}")
+sll.sll_node_delete_at_first()
+sll.sll_node_delete_at_last()
+sll.sll_node_delete_at_position(3)
 sll.display()
 
 
